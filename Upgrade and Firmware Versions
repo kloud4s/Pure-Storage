@@ -1,0 +1,16 @@
+Pure1 --> Select Target array --> Next --> Download
+
+Firmware versions: 6.0.0, 6.2.10, 6.3.1, 6.3.4, 6.4.0
+
+Prechecks:
+Active cluster Health
+Cluster version
+Controller models
+File compatability
+Hardware
+Host I/O
+Internal
+Invalid Upgrade
+NVMe
+Replications
+
