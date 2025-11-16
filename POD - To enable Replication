@@ -1,0 +1,34 @@
+In Pure Storage, PODs and Protection Groups organize, replicate, and protect data across FlashArrays, especially in disaster recovery and high availability.
+POD (Pure Object Domain):
+	• Definition: A POD is a logical container that groups multiple volumes, snapshots, and their configurations on a Pure Storage FlashArray. PODs enable consistent management and replication of these resources as a single unit.
+	• How It Works: When you replicate a POD, all the volumes within it are replicated together, maintaining their relationships (e.g., for a multi-volume application). PODs are typically used in an ActiveCluster configuration for synchronous replication across two arrays.
+	• Use Case: PODs are ideal for managing and replicating complex applications with multiple volumes needing consistent replication and failover capabilities.
+
+
+Difference Between POD and Protection Group:
+	• Purpose:
+		○ PODs are primarily used for synchronous replication and failover in an ActiveCluster setup, ensuring high availability and zero downtime.
+		○ Protection Groups are used for managing snapshots and asynchronous replication, focusing on consistent recovery points across multiple volumes.
+	• Replication:
+		○ PODs enable synchronous replication and are often used in environments that require continuous data availability.
+		○ Protection Groups support asynchronous replication, which is typically used in disaster recovery scenarios where some delay in data synchronization is acceptable.
+	• Use Case:
+		○ PODs are ideal for applications that require real-time data consistency and high availability across two sites.
+		○ Protection Groups are suited for environments that need consistent snapshots and data protection with the flexibility of asynchronous replication.
+
+POD is a container
+
+Storage Section --> POD
+
+C -  Create POD
+P - Place objects
+R - Replication
+
+
+Stretched POD - Sync
+Unstretched POD 
+
+1. Connect arrays
+2. Create POD
+3. Move respective volumes to POD
+4. Create a replication link.
