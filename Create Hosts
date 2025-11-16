@@ -1,0 +1,38 @@
+
+
+
+Create Host:
+
+Single Host:
+	a. Storage Tab --------> Host section -------> Click + symbol ----------> Create Host
+	Enter Hostname and click create
+	
+Multiple-Hosts:
+	a. Storage Tab --------> Host section -------> Click + symbol ----------> Create Host ------> Select multiple hosts
+	
+	Enter Hostname (ESX#), Start number, Count, and Number of digits, and click create
+	
+	
+	
+	
+	
+	
+	ADD Host ports to Host:
+	
+	Open Created Host --------> Go with Host port tab --------> + Symbol ----------> If discovered below select otherwise add WWNs or iSCSI
+	
+	Ex: Configure WWNs, IQNs, NQNs
+	
+	
+	Create Host Group:
+	
+	i. Storage Tab --------> Host section -------> Click + symbol ----------> Create Host Group
+	Enter the Host group name and click create
+	
+	Open Host Group -------> Add hosts to host group 
+	
+	
+	
+	
+	
+	
