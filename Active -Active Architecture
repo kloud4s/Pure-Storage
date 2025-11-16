@@ -1,0 +1,5 @@
+Active - Active cluster configuration RPO and RTO = O time
+
+
+Active Cluster is Pure Storage’s synchronous replication and clustering solution that provides high availability and disaster recovery. It enables two Flash Arrays to work as an active-active cluster, ensuring continuous availability of data. Data is synchronously replicated between the arrays, and in the event of a failure, the system can automatically failover with zero RPO (Recovery Point Objective) and minimal RTO (Recovery Time Objective).
+
