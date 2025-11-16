@@ -1,0 +1,27 @@
+Integrating Pure Storage with a VMware environment involves configuring the FlashArray as a datastore for the ESXi hosts. I would use the vSphere Web Client to connect to the FlashArray and create datastores. I would also install and configure the Pure Storage vSphere Web Client Plugin and the Pure Storage Management Pack for vRealize Operations to manage and monitor the storage environment efficiently. Additionally, I’d leverage VMware’s VAAI (vStorage APIs for Array Integration) to offload certain storage operations to the FlashArray, improving performance and efficiency.
+
+
+vCenter
+
+Dashboard --> Add plug-ins
+Enter flash array, username, and password
+
+Under solution --> Client Plugins 
+
+
+Pure:
+==============
+
+Settings --> Software --> Install plugins
+Click Edit vSphere Plugin Configuration
+
+We need an IP, Username, and password to install the plug-in 4.3.1 version.
+
+We can access the device on both sides
+
+We will create a Host group, host and add iSCSI 
+Create a volume, resize, and snapshots from the vCenter/Host
+Also, connect Flash array from source to destination hosts or VC.
+
+
+
