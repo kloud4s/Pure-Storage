@@ -1,0 +1,65 @@
+
+
+`
+
+
+
+UnBoxing: Accessories kit. NVRAM Flash modules, Expansion Storage shelf, 40 Flash disks, 5U
+
+
+
+Pure Storage is Simple and Automated, the Most efficient architecture, mission-critical reliability support, and Customer consumption model architecture design of the Pure Storage Flash Array, the all-flash storage array for every enterprise. Learn about Flash Array's hardware and software design, metadata, and data reduction features (deduplication, compression, pattern removal, and thin provisioning).
+
+
+The dashboard is a macro view of your entire storage array. 
+On the left-hand side, we have the health of the array> 
+all recent alerts below
+On the right-hand side, we have a capacity analysis.
+This shows your total provision capacity as well as data reduction ratios with and without them provisioning
+	We also have a total utilization percentage up here in the green.
+	Below capacity, we have real-time and historical analytics
+	for latency IOPs and bandwidth.
+
+
+Now let's jump to our storage tab for storage for visioning.
+
+With Pure Storage provisioning is incredibly easy.
+
+Forget about raid configurations tiering or performance tuning.
+
+From <https://www.youtube.com/watch?v=bPkAltNcGTY> 
+
+
+
+Pure Flash array:
+
+	1. Storage:
+		Array :
+		Hosts:
+		Volumes:
+		PODs:
+		File Systems:
+		Policies
+	
+	2. Protection
+		Snapshots
+		Policies
+		Protection Groups
+		Active DR
+		Active Cluster
+	3. Analysis
+	Performance
+	Capacity
+	Replication
+	
+	4. Health
+		Hardware:
+		Alerts:
+		Connections:
+		Network
+	5. Settings
+	
+
+
+
+
