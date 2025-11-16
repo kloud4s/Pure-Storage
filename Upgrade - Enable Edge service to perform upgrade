@@ -1,0 +1,32 @@
+Firmware upgrades in Pure Storage environments are typically non-disruptive due to the architecture of Pure arrays. The upgrade process involves planning the upgrade window, ensuring backups are up to date, and following Pure Storage’s documented procedures. Pure Storage support can assist with the upgrade to ensure it proceeds smoothly.
+	
+	
+	1. Administration --> Edge Services --> Request Access
+	2. CLI
+	#Puresupport enable edge-mgmt
+	#puresupport enable edge-agent-update
+	3. Pure1 --> Purity/FA Upgrade agent
+	Install FA Agent
+	
+We need at least 6.2.10 or 6.3.0 version to enable the Pure1 service
+
+
+Purity//FA Agent - Install edge service page
+
+Pure1:
+
+Software Life Cycles
+
+Scroll down 
+Select the array to upgrade firmware (mm78c-8 - FA-X50R3, Old version 6.3.1 & 6.3.3)
+
+Select the Target version and click Checks
+After checks
+Software  upgrade tab
+Download Bundle
+Click initiate Upgrade
+
+
+
+
+
