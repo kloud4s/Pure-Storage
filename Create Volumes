@@ -1,0 +1,13 @@
+Create Volumes:
+
+
+	a. Storage Tab --------> Volumes section -------> Click + symbol ----------> Create Volume
+	Enter volume name and mention size and click Create
+	
+	
+	
+	
+	b. After creating the volume
+	Connect the volume to the host or host group
+	
+	
