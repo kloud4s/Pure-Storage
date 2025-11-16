@@ -1,0 +1,40 @@
+If Flash Array features such as snapshots and replication are in use, related data, and transaction log Volumes should be placed in a protection group. A protection group defines members (Volumes, hosts, or host groups) that can be protected together with point-in-time consistency. The members within the protection group should have common data protection requirements and the same snapshot, replication, and retention schedules.
+
+Protection Group (PG):
+	• Definition: A Protection Group is a feature in Pure Storage used to group volumes and their snapshots for consistent snapshot management and asynchronous replication. Protection Groups are used to enforce a consistent recovery point across multiple volumes by creating snapshots at the same point in time.
+	• How It Works: When you create a snapshot of a Protection Group, snapshots of all included volumes are taken simultaneously. These snapshots can be replicated to a remote FlashArray, ensuring data consistency across multiple volumes.
+	
+Difference Between POD and Protection Group:
+	• Purpose:
+		○ PODs are primarily used for synchronous replication and failover in an ActiveCluster setup, ensuring high availability and zero downtime.
+		○ Protection Groups are used for managing snapshots and asynchronous replication, focusing on consistent recovery points across multiple volumes.
+	• Replication:
+		○ PODs enable synchronous replication and are often used in environments that require continuous data availability.
+		○ Protection Groups support asynchronous replication, which is typically used in disaster recovery scenarios where some delay in data synchronization is acceptable.
+	• Use Case:
+		○ PODs are ideal for applications that require real-time data consistency and high availability across two sites.
+		○ Protection Groups are suited for environments that need consistent snapshots and data protection with the flexibility of asynchronous replication
+
+
+Create Protection Groups:
+
+Click on Protection Tab ----------> Protection Group Section  ----->  + -----> Create 
+
+Enter PG Name and Click Create 
+
+Note: Protection Group as policy source snapshots
+
+Open Protection Group:
+
+Add Hosts or Host Groups or volumes
+
+Protection Group is used to create snapshot schedules.
+
+Click on Edit snapshot schedule
+
+
+
+
+Snapshot policy:
+
+
