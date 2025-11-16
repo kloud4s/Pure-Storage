@@ -1,0 +1,130 @@
+Pure Storage LUN Provisioning Process:- 
+
+INDEX :-
+ 1. Create a volume (LUN).
+ 2. Create a host and add WWPN/IQN.
+ 3. Create a host group (optional).
+ 4. Map the volume to the host or host group.
+ 5. Rescan the storage on the host.
+ 6. Format and mount the 
+ 7. Configure multipathing (if needed).
+ 8. Verify everything is working.
+
+1. Create a Volume (LUN)
+
+A volume in Pure Storage is essentially a LUN.
+
+Using GUI (Pure Storage Web Interface)
+ 1. Login to Pure Storage FlashArray UI.
+ 2. Navigate to Storage→ Volumes.
+ 3. Click + Create Volume.
+ 4. Enter a Volume Name and Size (e.g., 500GB).
+ 5. Click Create.
+
+Using CLI
+
+purevol create <volume_Rizwan> --size 500G
+
+2. Create a Host and Add WWPNs (for FC) or IQNs (for iSCSI)
+
+Before mapping, ensure the host is created and its WWPNs (Fibre Channel) or IQNs (iSCSI) are registered.
+
+Using GUI
+ 1. Navigate to Storage → Hosts & Host Groups.
+ 2. Click + Create Host.
+ 3. Enter the Host Name.
+ 4. Click on the host and add WWPNs (for FC) or IQNs (for iSCSI).
+
+Using CLI
+
+purehost create MyHost
+purehost create --iqn iqn.1993-08.org.debian:01:222 MyHost
+purehost create --wwn 21:00:00:24:ff:52:11:aa MyHost
+
+3. Create a Host Group (Optional)
+
+If multiple hosts need access to the same LUN (e.g., in a cluster), create a host group.
+
+Using CLI
+
+purehgroup create MyHostGroup
+purehgroup add --host MyHost1 MyHostGroup
+purehgroup add --host MyHost2 MyHostGroup
+
+4. Map the LUN to the Host or Host Group
+
+Once the host and LUN are ready, map them together.
+
+Using GUI
+ 1. Navigate to Storage → Hosts & Host Groups.
+ 2. Click on the Host or Host Group.
+ 3. Click + Connect Volumes.
+ 4. Select the volume (LUN) and click Connect.
+
+Using CLI
+
+purevol connect --host MyHost MyLUN
+
+For host groups:
+
+purevol connect --hgroup MyHostGroup MyLUN
+
+5. Verify the Mapping
+
+Using GUI
+ • Go to Storage → Hosts & Host Groups.
+ • Check the Connected Volumes section.
+
+Using CLI
+
+purevol list --connect
+
+6. Rescan the Storage on the Host
+
+On the Linux host, run:
+
+echo "- - -" > /sys/class/scsi_host/hostX/scan
+multipath -ll
+
+On a Windows host, use Disk Management → Rescan Disks.
+
+7. Format and Mount the LUN (Host-Side Configuration)
+
+For Linux
+
+fdisk -l
+mkfs.xfs /dev/mapper/mpathX
+mount /dev/mapper/mpathX /mnt/data
+
+For Windows
+ 1. Open Disk Management.
+ 2. Initialize the disk.
+ 3. Format as NTFS.
+ 4. Assign a drive letter.
+
+8. Multipathing Configuration (Linux)
+
+To ensure redundancy, install and configure multipath:
+
+yum install device-mapper-multipath
+multipath -ll
+
+Restart multipath service-
+
+systemctl restart multipath
+
+Final Verification
+ 1.Check Volume Mapping on Pure Storage
+
+purevol list --connect
+
+ 2.Verify on the Host (Linux)
+
+multipath -ll
+lsblk
+
+ 3.Verify on the Host (Windows)
+ • Use Disk Management 
+
+From <https://www.linkedin.com/feed/> 
+
