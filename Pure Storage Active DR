@@ -1,0 +1,92 @@
+
+1. For Asynchronous Replication:
+	○ Set Up Replication:
+		1. Configure replication between the source and destination arrays using Pure1 or the FlashArray GUI.
+		2. Ensure that replication policies and schedules are set up correctly.
+	○ Start Replication:
+		1. Begin the replication process, monitoring the progress through the GUI or CLI.
+		2. Wait for the initial data synchronization to complete.
+
+
+Connect Array from source to cluster:
+Settings --> Connected arrays (Required connection key of another pure storage array)
+Management address
+Replication address
+Type
+Connection Key
+
+
+	1. Login Source Array
+	Storage -----> Array Tab -------> Array connections + Connect array 
+	
+	Connect Array:
+	
+	
+	
+	Management Address: https://Flasharray.pure.local
+	Type: Async Replication
+	Connection Key: (Target cluster + Storage + Array Tab click + symbol select Get connection Key-----> Copy the connection key and paste in the source cluster
+	
+	
+	
+	
+	
+	
+	Replication Transport: Ethernet IP
+	Replication address: Auto-discovered unless using NAT 
+	
+	
+	Click on Connect
+	
+	Go with 2 cluster
+	Refresh application.
+	
+	
+	
+	See Array connected.
+	
+	
+	PODS:
+	
+	Create POD
+	
+	Storage ----------> PODs----------> Click + symbol and Create
+	
+	
+	
+	
+	Enter POD Name and click Create.
+	
+	Once Create POD -------> Open the POD ---------> Add volumes
+	
+	
+	POD Replica Link:
+	
+	 Storage ----------> PODs----------> Click + symbol and Create POD Replica Links
+	
+	
+	
+	Local POD Name: it takes POD Name automatically if multiple we need to select
+	Remote Array: Select from DROP down
+	Remote POD Name: Click on the new remote POD from the source cluster if you already have the target POD please select
+	
+	Click on Create.
+	
+	Go to the target cluster
+	Protection----> Active DR tab --------> We see replicating source
+	
+	
+	
+	
+	Check volumes and connect the volume to the host.
+	
+	
+	
+	To Map the iSCSI connection in Pure:
+	
+	Copy the server IQN and create a connection
+	Health------> Connection-------> Click + Symbol ------> Enter a group name and add the IQN
+	
+	Open iSCSI initiator in the server and connect the pure array under the target with the name 
+	
+	
