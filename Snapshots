@@ -1,0 +1,9 @@
+Snapshot: We create or overwrite the volume by copying a snapshot.
+
+Copy, Rename, Restore, destroy
+
+
+Create Snapshot policy:
+-------------------------------
+Protection --> Policies --> Create a new snapshot policy
+Add rules (Add timing)
