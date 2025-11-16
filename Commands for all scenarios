@@ -1,0 +1,640 @@
+Commands for all scenarios
+
+
+Pure Storage CLI Question Bank
+The How to guide for Pure Storage CLI Commands
+
+1. How to display the serial number of a specific hardware component of a Pure Flash Array
+purehw list CT0 --spec
+Display model, part number, and serial number of Controller 0
+	
+2. How to check the Remote Assist is active or inactive in a Pure Flash Array 
+purearray remoteassist --status
+check the Remote Assist is active or inactive
+	
+3. How to change the password for a user in Flash Array
+pureadmin setattr testuser --password
+Change the password for the user testuser
+	
+4. How to generate API token for a user in Flash Array
+pureadmin create testuser --api-token
+Generate an API token for the user testuser
+
+5. How to increase the size of a Volume in Pure Flash Array
+
+purevol setattr --size 2G MY_VOL_001
+Increase the size of MY_VOL_001 to 2GB ( from current size of 1GB for example )
+
+• How to list all the hardware components of a Pure Flash Array along with part and serial number
+purehw list --spec
+List all the hardware components along with information like Model name, Part number and serial number
+
+• How to display the name serial number and firmware version of Pure Flash Array
+purearray list
+Display the array name,serial number and firmware version
+
+• How to list all the destroyed Virtual Volumes pending for eradication in a Pure Flash Array
+purevol list --pending-only
+List all the destroyed Virtual Volumes pending for eradication
+• How to list all the Ethernet ports in a Pure Flash Array
+purehw list --type eth
+List all the Ethernet ports in an Array
+• How to list all the Host initiators and connected volumes
+purehost list --all
+List all the hosts in a Flash Array along with its member initiators connected to volumes through target ports
+• How to set the NTP server for Pure Flash Array
+purearray setattr --ntpserver time.google.com
+Set the NTP server
+• How to create a user in Flash Array
+pureadmin create testuser --role storage_admin
+Create user testuser with storage_admin role. Possible roles are readonly, ops_admin, storage_admin, array_admin
+• How to list all the hardware components of a Pure Flash Array
+
+purehw list
+List all the hardware components along with information like status, temperature, voltage etc.
+• How to list all the HBA WWNs logged in to a Flash Array target FC port
+pureport list --initiator --raw --filter "name='CT0.FC0'"
+Display all HBA WWNs logged to the FC port CT0.FC0
+• How to destroy Volume in Pure Flash Array
+purevol destroy MY_VOL_001
+Destroy virtual volume MY_VOL_001. This volume can be recovered within 24hrs. After that, physical storage occupied this volume will be reclaimed.
+• How to display all the FC Ports in the Flash Arrays
+pureport list --raw --filter "name='*FC*'"
+Display all the Fibre Channel Ports with its WWNs in the Flash Arrays
+• How to connect volume to host with specific LUN id in Pure Flash Array
+purevol connect MY_VOL_001 --host MY-SERVER-001 --lun 10
+Connect volume MY_VOL_001 to host MY-SERVER-001 and assign LUN id 10. This will Provide the R/W access to the volume.
+• How to list the pods with the mediator connectivity status in a Pure Flash array
+purepod list --mediator
+List all the pods along with connectivity status from each array to the mediator.
+• How to display audit log records in Pure Flash Storage
+pureaudit list
+Display the list of audit records. Audit trail records are created whenever administrative actions are perfromed by a user (for eg: creating, destroying, eradicating a volume)
+• How to set the personality for a host
+purehost setattr MY-SERVER-001 --personality esxi
+Set the personality of host MY-SERVER-001 to esxi. Some other values are aix, solaris etc..
+• How to expose the api token for the current user
+pureadmin list --api-token --expose
+List all the users with api tokens configured and expose the api token for the current user loggedin.
+• How to /data from one Volume to another in a Pure Flash Array
+purevol /MY_VOL_001 MY_VOL_002 --overwrite
+/data from MY_VOL_001 to an existing volume MY_VOL_002. Contents of MY_VOL_002 will be overwritten.
+• How to set the syslog servers for Pure Flash Array
+purearray setattr --syslogserver log.server.com
+set the syslog server for pure array
+• How to display the host with a specified WWN
+purehost list --filter "wwn='1000000000000003'"
+Display the host with WWN 1000000000000003 as a member
+• How to list all the controllers connected to a Pure Flash Array
+purearray list --controller
+List all the controllers connected to the Array. This will also display the model and status of each controller
+• How to eradicate multiple Virtual Volumes in Pure Flash Array
+purevol eradicate MY_VOL_001 MY_VOL_002
+Eradicate virtual volumes MY_VOL_001 and MY_VOL_002 which are destroyed earlier. This will fully destroy the volumes and not be able to recover further.
+• How to list all the connected volumes for a hostgroup in a Pure Flash array
+purehgroup list --connect MY-HOSTS
+List all the connected volumes for hostgroup MY-HOSTS
+• How to add new HBA wwn to a host object in Pure Flash Array
+purehost setattr MY-SERVER-001 --addwwnlist 1000000000000003
+Add new HBA wwn 1000000000000003 to host MY-HOST-001. 1000000000000003 should not be part of any other host.
+• How to add hosts to existing hostgroups in Pure Flash Array
+purehgroup setattr MY-HOSTS --addhostlist MY-HOST-002,MY-HOST-003
+Add MY-HOST-002 and MY-HOST-003 to existing hostgroup MY-HOSTS
+• How to display the NTP servers configured in a Pure Flash Array
+purearray list --ntpserver
+List the NTP servers configured
+• How to list all the Controllers in a Pure Flash Array
+purehw list --type ct
+List all the Controller in an Array
+• How to list all the FC ports in a Pure Flash Array
+purehw list --type fc
+List all the FC ports in an Array with status and speed information
+• How to enable phonehome in a Pure Flash Array
+purearray enable phonehome
+Enable phonehome or dialhome feature of array.
+• How to display all the host initiators know to the Flash Array
+pureport list --initiator
+Display all the host initiator WWNs, IQNs, NQNs known for the Flash Array. This also shows the target ports on which the initiators are eligible to communicate.
+• How to display the replication throttle limit of a Pure Flash Array
+purearray list --connect --throttle
+Display the replication throttle limit
+• How to configure the DNS attributes of a Pure Flash array
+puredns setattr --domain test.com --nameservers 192.168.0.10,192.168.2.11
+Add the IPv4 addresses of two DNS servers for Array to use to resolve hostnames to IP addresses, and the domain suffix test.com for DNS searches.
+• How to list all the flagged alerts in a Pure Flash array
+purealert list --flagged
+List all the alerts that are flagged. By default all alerts are flagged. We can unflag command once those are resolved.
+• How to unflag an alert in the Pure Flash array
+purealert unflag 121212
+Unflag alert with ID 121212. This will not appear in the flagged alert list.
+• How to rename a Pure Flash Array
+purearray rename MYARRAY001
+Set the name of the array to MYARRAY001
+• How to unstretch a POD
+purepod remove --array PFAX70-REMOTE MYPOD001
+Remove the remote array PFAX70-REMOTE from the POD MYPOD001. This will unstretch the POD and volume data inside the POD no longer synchronously replicated between two arrays. Volumes within the POD will be only visible in local array.
+• How to list all the Open alerts in a Pure Flash array
+purealert list --filter "state='open'"
+List all the alerts in Open state
+• How to eradicate a Volume in Pure Flash Array
+purevol eradicate MY_VOL_001
+Eradicate virtual volume MY_VOL_001 which is destroyed earlier. This will fully destroy the volume and not be able to recover further.
+• How to admit the newly connected drive modules in a Pure Flash array
+puredrive admit
+Admit all drive modules that have been added or connected but not yet admitted to the array. Once successfully admitted, the status of the drive modules will change from unadmitted to healthy.
+• How to display the Dial Home status of a Pure Flash Array
+purearray list --phonehome
+Display the dial home configuration status of the Array
+• How to create a volume and include in POD
+purevol create --size 1G MYPOD001::MY_VOL_001
+Create a volume of 1GiB size and include it in MYPOD001. If MYPOD001 is stretched, the same volume will be created and visible on the remote arrays too. The volume name and WWN number will appear same from each arrays.
+• How to recover a Volume in Pure Flash Array
+purevol recover MY_VOL_001
+Recover virtual volume MY_VOL_001 which is destroyed earlier.
+• How to change the role of a user in Flash Array
+pureadmin setattr testuser --role array_admin
+Change the role of the user testuser to array_admin role. Possible roles are readonly, ops_admin, storage_admin, array_admin
+• How to list all flash drives and NVRAM modules in a Pure Flash Array with total capacity
+puredrive list --total
+List all the flash drive modules in an Array with the total capacity figure
+• How to list all the Hosts with connected volumes
+purehost list --connect
+List all the hosts in a Flash Array which have connected volumes
+• How to rename a Volume in Pure Flash Array
+purevol rename MY_VOL_001 MY_VOL_002
+Rename virtual volume MY_VOL_001 to MY_VOL_002
+• How to create multiple Volume in a Pure Flash Array
+purevol create --size 10G MY_VOLUME_001 MY_VOLUME_002
+Create Virtual volumes MY_VOLUME_001 and MY_VOL_SIZE_002 of size 10GB
+• How to pause the replication link in a Pure Flash array
+purepod replica-link pause PRDPOD001 --remote ARRAY002 --remote-pod DRPOD001
+Pause the Active/DR replication by pausing the replica link connection between local and remote array. To continue the replication resume the replica link
+• How to move the volume out of a pod in Pure Flash array
+purevol move MYPOD001::vol001 ""
+Move the volume vol001 out of the non-stretched pod MYPOD001. Will throw an error if trying to move from a stretched pod.
+• How to display the historical capacity and usage statistics information of a Pure Flash Array
+purearray list --space --historical 30d
+Display the capacity and usage statistics information of the Array since last 30 days
+• How to connect volume to hostgroup in Pure Flash Array
+purevol connect MY_VOL_001 --hgroup MY-HOSTS
+Connect volume MY_VOL_001 to hostgroup MY-HOSTS. This will assign a lun id to the volume. The lun id will start from 1 and go up to 16383.
+• How to list all the users with api tokens configured in the Flash Array
+pureadmin list --api-token
+List all the users with api tokens configured
+• How to stretch a POD
+purepod add --array PFAX70-REMOTE MYPOD001
+Add the remote array PFAX70-REMOTE to the POD MYPOD001. This will stretch the POD and volume data inside the POD synchronously replicated between two arrays. The arrays in a stretched POD are considered as peers, there is no concept of source and target. Volumes within the POD will be visible in each arrays with same serial numbers.
+• How to list all the Hosts in a Flash Array
+purehost list
+List all the hosts in a Flash Array with its member WWNs or IQNs or NQNs. This will also show the Host Groups if it part of any.
+• How to create a hostgroup with existing hosts in Pure Flash Array
+purehgroup create MY-HOSTS --hostlist MY-HOST-001,MY-HOST-002
+Create hostgroup MY-HOSTS and add existing hosts MY-HOST-001 and MY-HOST-002 in to it
+• How to reduce the size of a Volume in Pure Flash Array
+purevol truncate --size 1G MY_VOL_001
+Reduce the size of MY_VOL_001 to 1GB ( from current size of 8GB for example )
+• How to list all the volumes sorted by size and consumption on a Pure Flash Array
+purevol list --space --sort size,total
+List all the volumes sorted by size of each volume and then total space consumed. Both fields are sorted in ascending order.
+• How to search for HBA WWN and on which FC port its been logged in to on Flash Array
+pureport list --initiator --raw --filter "initiator.wwn='1000000000000001'"
+Search for HBA WWN 1000000000000001 and on which FC port its been logged in to.
+• How to create a /of Volume in Pure Flash Array
+purevol /MY_VOL_001 MY_VOL_002
+Create a /MY_VOL_001 and name it as MY_VOL_002. If MY_VOL_002 already exists this will throw and error.
+• How to delete host object in a Pure Flash Array
+purehost delete MY-SERVER-001
+Delete host MY-SERVER-001
+• How to connect host to volume with a specific LUN id in Pure Flash Array
+purehost connect MY-SERVER-001 --vol MY_VOL_001 --lun 10
+Connect volume MY_VOL_001 to host MY-SERVER-001 and assign LUN id 10. This will Provide the R/W access to the volume.
+• How to list all the closed alerts in the Pure Flash array
+purealert list --filter "state='closed'"
+List all the closed alerts
+• How to display the connection key that can be used to connect to a Pure Flash Array
+purearray list --connection-key
+Display the connection key that can be used to connect to the array
+• How to disconnect volume from host in Pure Flash Array
+purevol disconnect MY_VOL_001 --host MY-SERVER-001
+Disconnect volume MY_VOL_001 from host MY-SERVER-001. This will remove the visibility of the volume to the host.
+• How to disconnect a specific volume from the host in Pure Flash Array
+purehost disconnect MY-SERVER-001 --vol MY_VOL_001
+Disconnect volume MY_VOL_001 from host MY-SERVER-001. This will remove the visibility of the volume to the host.
+• How to remove hosts from hostgroups in Pure Flash Array
+purehgroup setattr MY-HOSTS --remhostlist MY-HOST-002,MY-HOST-003
+Remove MY-HOST-002 and MY-HOST-003 from hostgroup MY-HOSTS
+• How to list all the drive modules in a Pure Flash Array
+purehw list --type bay
+List all the Drive modules in an Array
+• How to display all the FC Ports in a controller within the Flash Arrays
+pureport list --raw --filter "name='CT0.FC*'"
+Display all the Fibre Channel Ports in Controller 0 with its WWNs in the Flash Arrays
+• How to display all the Flash Array Target Ports
+pureport list
+Display all the target ports within the Flash Array. This includes FC, iSCSI and NVME ports. This command also displays WWNs of FC ports iSCSI Qualified Names(IQNs) for iSCSI ports and NVMe Qualified Names(NQNs) for NVMe ports.
+• How to list all the users configured in the Flash Array
+pureadmin list
+List all the users configured in the Flash Array
+• How to destroy a POD
+purepod destroy MYPOD001
+Destroy or delete POD MYPOD001. The POD must be empty and unstretched to destroy. POD will not be destructed immediately, but placed under 24hr eradication pending period.
+• How to move the volume to the pod in a Pure Flash array
+purevol move vol001 MYPOD001
+Move the volume vol001 to the non-stretched pod. This will throw an error message if trying to add to a stretched pod.
+• How to list all the PODs in the Pure Flash array
+purepod list
+List all the PODs in the Pure Flash array. This will shows the arrays in POD and status of each.
+• How to list all the snap shots in a Pure Flash Array
+purevol list --snap
+List all the snap shots
+• How to display the current DNS parameters configured in the Pure Flash array
+puredns list
+Display the current DNS parameters configured in the array. This includes the domain suffixes and IP addresses of the name servers
+• How to remove all the hosts from a hostgroup in Pure Flash Array
+purehgroup setattr MY-HOSTS --hostlist ""
+Remove all the hosts from hostgroup MY-HOSTS
+• How to disconnect volume from hostgroup in Pure Flash Array
+purehgroup disconnect MY-HOSTS --vol MY_VOL_001
+Disconnect volume MY_VOLUME_001 from hostgroup MY-HOSTS
+• How to display the syslog server setting for a Pure Flash Array
+purearray list --syslogserver
+List the syslog server names configured to push the logs in pure array
+• How to display the arraywide IO performance of a Pure Flash Array
+purearray monitor --interval 4 --repeat 5
+Display the array-wide IO performance of a Flash Array in every 4 seconds for 5 times.
+• How to list all flash drives and NVRAM modules in a Pure Flash Array
+puredrive list
+List all the flash drive modules in an Array. This will also display the capacity of each module.
+• How to list all the Volumes in a Pure Flash Array
+purevol list
+List all the Virtual Volume
+• How to change the bandwidth a Volume in Pure Flash Array
+purevol setattr --bw-limit 1M MY_VOL_001
+Change the bandwidth limit of MY_VOL_001 to 1MB/s
+• How to list all the volumes connected to a Host
+purehost list MY-SERVER-001 --connect
+List all the volumes connected to Host MY-SERVER-001
+• How to monitor replica links in a Pure Flash array
+purepod replica-link monitor --replication
+Monitor the data transfer speed on the replica links on the array. If the replication link is pause, the speed will show as 0
+• How to connect multiple volumes to host in a Pure Flash Array
+purevol connect MY_VOL_001 MY_VOL_002 --host MY-SERVER-001
+Connect volumes MY_VOL_001 and MY_VOL_002 to host MY-SERVER-001
+• How to connect volume to host in Pure Flash Array
+purevol connect MY_VOL_001 --host MY-SERVER-001
+Connect volume MY_VOL_001 to host MY-SERVER-001. This will Provide the R/W access to the volume.Next available lun address will used by default.
+• How to rename a host object in a Pure Flash Array
+purehost rename MY-SERVER-001 YOUR-SERVER-001
+Rename host MY-SERVER-001 to YOUR-SERVER-001
+• How to create multiple host objects in a Pure Flash Array
+purehost create MY-SERVER-001 MY-SERVER-002
+Create hosts MY-SERVER-001 and MY-HOST-002
+• How to remove hba wwn from a host object in Pure Flash Array
+purehost setattr MY-SERVER-001 --remwwnlist 1000000000000003
+Remove HBA wwn 1000000000000003 from host MY-SERVER-001
+• How to display all the iSCSI Ports in aFlash Array
+pureport list --raw --filter "name='*ETH*'"
+Display all the iSCSI Ports with its IQNs in the Flash Arrays
+• How to disconnect multiple volumes from a host in Pure Flash Array
+purevol discconnect MY_VOL_001 MY_VOL_002 --host MY-SERVER-001
+Disconnect volumes MY_VOL_001 and MY_VOL_002 from host MY-SERVER-001
+• How to set the minimum password length of user accounts in a Pure Flash array
+pureadmin global setattr --min-password-length 8
+Set the minimum length of characters required for all the local user account passwords to 8. Minimum length allowed is 1. This will not affect the existing user accounts, but all future password assignment must meet the new value.
+• How to connect volume with hostgroup in Pure Flash Array
+purehgroup connect MY-HOSTS --vol MY_VOL_001
+Connect volume MY_VOLUME_001 to hostgroup MY-HOSTS. This will assign a lun id to the volume. The lun id will start from 254 and go down up to 1If all LUNs in the [1...254] range are taken, Purity//FA starts at LUN 255 and counts up to the maximum LUN 16383, assigning the first available LUN to the connection.
+• How to display the personality of a host
+purehost list MY-SERVER-001 --personality
+Display the personality of host MY-SERVER-001
+• How to connects the local Pure Flash array to remote array for asynchronous replication using the connection key
+purearray connect --management-address 10.0.0.1 --type async-replication --connection-key
+Connects the local array to remote array 10.0.0.1 for asynchronous replication using the connection key. The Connection key will be prompted to enter.
+• How to connect a volume to multiple hosts in Pure Flash Array
+purehost connect MY-SERVER-001 MY-SERVER-002 --vol MY_VOL_001
+Connect volume MY_VOL_001 to hosts MY-SERVER-001 and MY-SERVER-002
+• How to create a host object in Pure Flash Array
+purehost create MY-SERVER-001
+Create a host object called MY-SERVER-001. HBA wwns can be added later using purehost setattr command.
+• How to list the audit record for a particular command executed in Pure Flash Array
+pureaudit list --filter 'command="purepod"'
+List all the audit records for purepod command executed in the array
+• How to create multiple PODs
+purepod create MYPOD001 MYPOD002
+Create PODs named MYPOD001 and MYPOD002
+• How to list all the destroyed volumes pending for eradication in a Pure Flash Array
+purevol list --pending
+List all the Virtual Volumes including destroyed but pending for eradication
+• How to create snap shot of a Volume with a specific suffix in a Pure Flash Array
+purevol snap MY_VOL_001 --suffix PRD
+Create snap shot of MY_VOL_001 with PRD as a suffix. MY_VOL_001.PRD will be created
+• How to demote a pod in Pure Flash array
+purepod demote MYPOD001
+Demote the pod MYPOD001
+• How to disable phonehome in a Pure Flash Array
+purearray disable phonehome
+Disable phonehome or dialhome feature of array.
+• How to unlock a locked user in Flash Array
+pureadmin reset testuser --lockout
+Unlock locked user testuser
+• How to disconnect remote array from the local Pure Flash array
+purearray disconnect 10.0.0.1
+Disconnects array 10.0.0.1 from the local array connected for remote replication.
+• How to list all the hostgroups and connected volumes in Pure Flash Array
+purehgroup list --connect
+List all the hostgroups and connected volumes
+• How to connect volume to hostgroup with specific lun id in Pure Flash Array
+purehgroup connect MY-HOSTS --vol MY_VOL_001 --lun 100
+Connect volume MY_VOLUME_001 to hostgroup MY-HOSTS and assign LUN id 100
+• How to delete a user from Flash Array
+pureadmin delete testuser
+Delete user testuser from Flash Array
+• How to list all the critical alerts in a Pure Flash array
+purealert list --filter "severity='critical'"
+List all the alerts with Critical severity.
+• How to display information about a specific Pure Flash Array drive
+puredrive list CH0.BAY10
+Display information about flash drive BAY10 in CH0
+• How to create a POD
+purepod create MYPOD001
+Create a POD called MYPOD001
+• How to list all the volumes sorted by serial number in descending order on a Pure Flash Array
+purevol list --sort "serial-"
+List all the volumes sorted by serial number descending order
+• How to create a replica link in a Pure Flash array
+purepod replica-link create PRDPOD001 --remote ARRAY002 --remote-pod DRPOD001
+Create a replica link between PRDPOD001 on current array(ARRY001) and DRPOD001 on remote array ARRAY002.
+• How to destroy multiple Virtual Volumes in Pure Flash Array
+purevol destroy MY_VOL_001 MY_VOL_002
+Destroy virtual volumes MY_VOL_001 and MY_VOL_001. These volumes can be recovered within 24hrs. After that, physical storage occupied these volumes will be reclaimed.
+• How to display the audit records sorted by user
+pureaudit list --sort user
+Display the list of audit records sorted by the user field. By default the records are sorted by the time field
+• How to display the capacity report for hostgroups in a Pure Flash Array
+purehgroup list --space
+List all the hostgroups with the total capacity of volumes provisioned to each and the consumption
+• How to create snap shot of a Volume in a Pure Flash Array
+purevol snap MY_VOL_001
+Create snap shot of MY_VOL_001. If it is first snap then MY_VOL_001.2 will be created
+• How to display all the commands to reproduce the complete Pure Array configuration
+pureconfig list --all
+Displays all the commands required to reproduce the current FlashAarray configuration of hosts, host groups, pods, protection groups, volumes, volume groups, connections, file systems and directories, alert, network, policies, and support.
+• How to list all the volumes included in a POD
+purepod listobj --type vol MYPOD001
+List all the volumes included in MYPOD001
+• How to display first few rows of audit records
+pureaudit list --limit 10
+Display the first 10 rows of audit records
+• How to list all flash drives and NVRAM modules in a Pure Flash Array along with protocol info
+puredrive list --spec
+List all the flash drive modules in an Array along with Protocol( SAS/NVME) information
+• How to create a Volume in a Pure Flash Array
+purevol create --size 10G MY_VOLUME_001
+Create a Virtual volume called MY_VOLUME_001 of size 10GB
+• How to set the maximum failed login attempts before the user get locked out in a Pure Flash array
+pureadmin global setattr --max-login-attempts 3
+Set the maximum failed login attempts to 3 before the user get locked out.
+• How to removes DNS server IP addresses from the DNS entry on a Pure Flash array
+puredns setattr --nameservers""
+Unassigns DNS server IP addresses from the DNS entry. This will stop making DNS entries.
+• How to delete a hostgroup in Pure Flash Array
+purehgroup delete MY-HOSTS
+Delete empty hostgroup MY-HOSTS.
+• How to clone a POD in a Pure Flash array
+purepod clone MYPOD001 MYPOD002
+Clone pod MYPOD001 and create MYPOD002. MYPOD002 inherits the entire history and configuration of the MYPOD001 including its protection groups, PG snap shots and replication policies. volumes, volume snapshots etc. However Serial number(WWN) of the volumes will be different from the source POD volumes.
+• How to rename hostgroup in Pure Flash Array
+purehgroup rename MY-HOSTS YOUR-HOSTS
+Rename hostgroup MY-HOSTS with YOUR-HOSTS
+• How to display remotely connected arrays for replication
+purearray list --connect
+Display remotely connected arrays for replication
+• How to increase the size of multiple Volume in Pure Flash Array
+purevol setattr --size 2G MY_VOL_001 MY_VOL_002
+Increase the size of MY_VOL_001 and MY_VOL_002 to 2GB ( the current size of MY_VOL_001 is 500MB and MY_VOL_002 is 1GB, for example )
+• How to list the audit record for a particular command and subcommand executed in Pure Flash Array
+pureaudit list --filter 'command="purepod" and subcommand="create"'
+List all the audit records for purepod create command executed in the array
+• How to list the hosts and personality assigned to each
+purehost list --personality
+Display the list hosts along with the personality set against each. The personality is define using the purehost setattr command.
+• How to list the audit record for a particular command executed in Pure Flash Array by a specific user
+pureaudit list --filter 'command="purepod" and user="pureuser"'
+List all the audit records for purepod commands executed by pureuser in the array
+• How to display information about a specific Pure Flash Array drive and all other drives in same pack
+puredrive list CH0.BAY10 --pack
+Display information about flash drive BAY10 in CH0 and all other drives in the same pack
+• How to list all the volumes sorted by size in descending order on a Pure Flash Array
+purevol list --sort "size-"
+List all the volumes sorted by size in descending order
+• How to list all the hostgroups in Pure Flash Array
+purehgroup list
+List all the hostgroups a with member hosts
+• How to eradicate a POD
+purepod eradicate MYPOD001
+Completely delete or eradicate POD MYPOD001. The POD will not recover after this.
+• How to list all the hosts with shared volumes assigned through hostgroup in a Flash Array
+purehost list --connect --shared
+List all the hosts with shared volumes assigned through hostgroup
+• How to remove all the wwns from a host object in Pure Flash Array
+purehost setattr MY-SERVER-001 --wwnlist ""
+Remove all wwns from MY-HOST-001
+• How to remove all the NTP servers configured for Pure Flash Array
+purearray setattr --ntpserver ''
+Remove all the NTP servers configured for pure array
+• How to delete API Token for current user in Flash Array
+pureadmin delete --api-token
+Delete API Token for current user
+• How to list all the alerts generated in the Pure Flash Array
+purealert list
+List all the alerts generated in the Pure Flash Array
+• How to display the capacity and usage statistics information of a Pure Flash Array
+purearray list --space
+Display the capacity and usage statistics information of the Array.
+• How to eradicate multiple PODs
+purepod eradicate MYPOD001 MYPOD002
+Completely delete or eradicate PODs MYPOD001 MYPOD002. The PODs will not recover after this.
+• How to rename a POD
+purepod rename MYPOD001 YOURPOD001
+Change the name of POD from MYPOD001 to YOURPOD001
+• How to set the failover preference for the pod in a Pure Flash array
+purepod setattr --failover-preference ARRAY002 MYPOD001
+Set the failover preference for pod MYPOD001 on current array ARRAY01.MYPOD001 has arrays ARRAY01 and ARRAY02. If the arrays lose contact each other ARRY002 should get priority over ARRAY001 to reach the mediator first.
+• How to display the details of all the hosts with a particular name
+purehost list MY-SERVER*
+Display the details of all the Hosts those name start with MY-SERVER
+• How to display the locked out user accounts in the Pure Flash array
+pureadmin list --lockout
+List all the user accounts that are currently lockout
+• How to list all the hosts with non shared volumes
+purehost list --connect --private
+List all the hosts with non shared volumes. Volumes are not assigned through hostgroup.
+• How to create a host object and add HBA wwns in a Pure Flash Array
+purehost create MY-SERVER-001 --wwnlist 1000000000000001,10:00:00:00:00:00:00:01
+Create a host object called MY-SERVER-001 and add HBA wwns to it
+• How to list all the PODs including destroyed
+purepod list --pending
+List all the PODs including destroyed, but not eradicated
+• How to display all the commands to reproduce the entire configuration of a Pure Flash Array
+pureconfig list
+Display list of commands to reproduce the volumes, hosts, host groups, connections, network, alert and array configurations. >>ing this and running in another array will create an exact >>.
+• How to list the pods and failover preferences
+purepod list --failover-preference
+List all the pods with its failover preferences. Failover preference determines which array within a stretched pod should give preference to stay online if the arrays ever lose contact with each other. If both arrays reach mediator, the failover preference determines which array get to be online. But if only one array reach to mediator, then that array will be online regardless of the preference.
+• How to list all the volumes sorted by serial number in ascending order on a Pure Flash Array
+purevol list --sort serial
+List all the volumes sorted by serial number ascending order
+• How to create API Token for a user valid with a limited timeframe in Flash Array
+pureadmin create testuser --api-token --timeout 2h
+Create API Token for testuser valid for 2 hours
+• How to remove all the members from a hostgroup
+purehgroup setattr MY-HOSTS --hostlist ""
+Remove all the hosts from hostgroup MY-HOSTS
+• How to removes the domain suffix from Pure Flash array DNS queries
+puredns setattr --domain ""
+Removes the domain suffix from Purity//FA DNS queries
+• How to list all the volume with a specific size in a Flash Array
+purevol list --filter "size='20T'"
+List all the volumes with 20TB size
+• How to disconnect a volume from multiple hosts in Pure Flash Array
+purehost disconnect MY-SERVER-001 MY-SERVER-002 --vol MY_VOL_001
+Disconnect volume MY_VOL_001 from hosts MY-SERVER-001 and MY-SERVER-002
+• How to display the audit records for a specific user
+pureaudit list --filter 'user = "root"'
+Display the list of audit records for the root user
+• How to delete multiple host objects in a Pure Flash Array
+purehost delete MY-SERVER-001 MY-SERVER-002
+Delete hosts MY-SERVER-001 MY-SERVER-002
+• How to connect host with volume in Pure Flash Array
+purehost connect MY-SERVER-001 --vol MY_VOL_001
+Connect volume MY_VOL_001 to host MY-SERVER-001. This will Provide the R/W access to the volume.Next available lun address will used by default.
+• How to delete API Token for a specific user in Flash Array
+pureadmin delete testuser --api-token
+Delete API Token for user testuser
+• How to list only the destroyed PODs
+purepod list --pending-only
+List only the PODs which are destroyed, but not eradicated
+• How to display the details of a Host
+purehost list MY-SERVER-001
+Display the details of Host MY-SERVER-001
+• How to set the lockout duration after maximum unsuccessful login attempts in a Pure Flash array
+pureadmin global setattr --lockout-duration 1m
+Set the lockout duration to 1 minute after maximum unsuccessful login attempts.
+• How to display information about a specific hardware component of a Pure Flash Array
+purehw list CT0.FC0
+Display information about FC port 0 on controller 0. Port status and speed also be displayed.
+• How to display all the pods along with the maximum physical capacity that each will take on the Pure Flash array
+purepod list --footprint
+Display all the pods along with the maximum physical capacity that each will take on the array
+• How to remove all the syslog servers configured for Pure Flash Array
+purearray setattr --syslogserver ''
+Remove all the syslog server servers configured for pure array
+• How to replace hostgroup members with other hosts in Pure Flash Array
+purehgroup setattr MY-HOSTS --hostlist MY-HOST-002,MY-HOST-003
+Replace members of MY-HOSTS with new hosts MY-HOST-002 and MY-HOST-003
+• How to update the content of a host object in a Pure Flash Array
+purehost setattr MY-SERVER-001 --wwnlist 1000000000000003
+Update the contents of an existing host with new wwn 1000000000000003
+• How to list all the volumes sorted by created time in ascending order on a Pure Flash Array
+purevol list --sort created
+List all the volumes sorted by create time in ascending order
+• How to recover a POD that is destroyed earlier
+purepod recover MYPOD001
+Recover MYPOD001 which is destroyed earlier.
+• How to list all the drive modules in a Pure Flash Array along with part number and serial number
+purehw list --type bay --spec
+List all the Drive modules in an Array along with part number and serial number
+• How to destroy multiple PODs
+purepod destroy MYPOD001 MYPOD002
+Destroy or delete PODs MYPOD001 MYPOD002. The PODs must be empty and unstretched to destroy. PODs will not be destructed immediately, but placed under 24hr eradication pending period.
+• How to list all the volumes sorted by size in ascending order on a Pure Flash Array
+purevol list --sort size
+List all the volumes sorted by size in ascending order
+• How to create a hostgroup in Pure Flash Array
+purehgroup create MY-HOSTS
+Create a hostgroup called MY-HOSTS
+• How to create a Volume in a Pure Flash Array with limited bandwidth
+purevol create --size 10G MY_VOLUME_001 --bw-limit 10M
+Create a Virtual volume MY_VOLUME_001 of size 10GB and limit is bandwidth to 10MB/s
+• How to list the Virtual Volumes with a specific prefix in Pure Flash Array
+purevol list MY_VOL*
+List all the Virtual Volumes prefixed with MY_VOL
+• How to display a HostGroup with a specific Host as member
+purehgroup list --filter "host_list='MY-SERVER-001'"
+Display the Host Group where Host MY-SERVER-001 is a member
+• How to list the information about a specific Virtual Volume in Pure Flash Array
+purevol list MY_VOL_001
+List information about MY_VOL_001
+• How to list the replica links in a Pure Flash array
+purepod replica-link list
+List the replica links in the current array
+• How to change the bandwidth of multiple Volume in Pure Flash Array
+purevol setattr --bw-limit 1M MY_VOL_001 MY_VOL_002
+Change the bandwidth limit of MY_VOL_001 and MY_VOL_002 to 1MB/s
+• How to display the global administration attributes set on Pure Flash array
+pureadmin global list
+List the global administration attributes like Lockout Duration, Maximum Login Attempts, Minimum Password Length, etc..
+• How to display Pure Flash arrays connected for remote replication along with connection paths
+purearray list --connect --path
+Display arrays connected for remote replication along with connection paths
+• How to delete multiple hostgroups in Pure Flash Array
+purehgroup delete MY-HOSTS_1 MY-HOSTS-2
+Delete empty hostgroups MY-HOSTS-1 and MY-HOSTS-2
+• How to list all the arrays included in a POD
+purepod listobj --type array MYPOD001
+List all the arrays included in MYPOD001
+• How to display the system configuration in the form of commands in a Pure Flash array
+pureconfig list --system
+Displays the system configuration of the flah array including network, policies, alert and support
+• How to delete replica link in a Pure Flash array
+purepod replica-link delete PRDPOD001 --remote-pod DRPOD001
+Delete the replica link between PRDPOD001 and remote pod DRPOD001
+• How to connects the local Pure Flash array to remote array for synchronous replication via Ethernet transport using the connection key
+purearray connect --management-address 10.0.0.1 --type sync-replication --replication-transport ip -- connection-key
+Connects the local array to remote array 10.0.0.1 for synchronous replication via Ethernet transport using the connection key. The Connection key will be prompted to enter.
+• How to remove array with unknown status from pod in a Pure Flash array
+purevol remove --array PFAX70-REMOTE --with-unknown MYPOD001
+Remove array PFAX70-REMOTE with status unknown from pod MYPOD001
+• How to resume the replica link in a Pure Flash array
+purepod replica-link resume PRDPOD001 --remote ARRAY002 --remote-pod DRPOD001
+Resume the Active/DR replication by resuming the replica link connection between local and remote array. To continue the replication resume the replica link
+• How to clear the permission cache for all the users in a Pure Flash Array
+pureadmin refresh --clear
+Clears the permission cache for all the users
+• How to list the details of a specific POD
+purepod list MYPOD001
+List the detail of POD MYPOD001
+• How to clear the permission cache for a specific user in the Pure Flash Array
+pureadmin refresh --clear testuser
+Clears the permission cache for testuser
+• How to display the object configuration commands to reproduce the logical components in a Pure Flash array
+>>
+pureconfig list --object
+Displays the object configuration of the FlashArray including hosts, host groups, pods, protection groups, volumes, volume groups, and connections, as well as file systems and directories if file services are enabled.
+• How to list all the remote pods not stretched to current Pure Flash array
+purepod list --on ARRAY02
+Display all the pods on the connected arry ARRAY02 and not stretched to the current array( ARRAY001)
+• How to list all the alerts generated for failures in a Pure Flash array
+purealert list --filter "issue='failure'"
+List all the alerts generated for failures
+• How to connects the local Pure Flash array to remote array for synchronous replication using the connection key
+purearray connect --management-address 10.0.0.1 --type sync-replication --connection-key
+Connects the local array to remote array 10.0.0.1 for synchronous replication using the connection key. The Connection key will be prompted to enter.
+• How to list all the volumes sorted by created time in descending order on a Pure Flash Array
+purevol list --sort "created-"
+List all the volumes sorted by create time in descending order
+• How to refresh the permission cache for a specific user in the Pure Flash Array
+pureadmin refresh testuser
+Refresh the permission cache for testuser
+• How to enable single sign-on on the Pure Flash array
+pureadmin global enable --single-sign-on
+This enables single sign-on on the current array. Enabling single sign-on gives LDAP users the ability to navigate seamlessly from Pure1 Manage to the current array through a single login.
+• How to disable single sign-on on the Pure Flash array
+pureadmin global disable --single-sign-on
+This will disable single sign-on on the current array. Enabling single sign-on gives LDAP users the ability to navigate seamlessly from Pure1 Manage to the current array through a single login.
+• How to flag an alert in the Pure Flash array
+purealert flag 121212
+Flag an alert with ID 121212. This will appear in the flagged alert list.
+• How to disconnect volume from hostgroup in Pure Flash Array
+purevol disconnect MY_VOL_001 --hgroup MY-HOSTS
+Disconnect volume MY_VOL_001 from hostgroup MY-HOSTS
