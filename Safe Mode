@@ -1,0 +1,40 @@
+SafeMode is a data protection solution that is built into FlashArray™ and FlashBlade® systems. The combination of immutable snapshots and SafeMode gives Epic customers using Pure Storage products a higher level of data protection from data destruction, ransomware attacks, or user error.
+
+SafeMode is a data-protection solution that is built into FlashArray™ and FlashBlade™. Simply call Pure Storage Support and request it.
+
+
+SafeMode Is Easy to Enable
+Login Pure1 --> Appliance --> View Assess --> enable safe mode
+
+Simply call Pure Storage Support and request it. Support will set up a conference call with you and your account team. Changes to SafeMode are only possible when at least two authorized contacts from your organization conference with the Support team.
+
+Available in Purity 6.4. 10, Auto-on SafeMode delivers ransomware protections by default when new volumes are created, automatically. The best protections are those you don't have to think about using. They just happen, like the text editor that auto-saves every change you make in real time.
+
+
+
+
+
+
+
+Pure Storage's SafeMode™ is a built-in feature to lock objects (volumes, files, and snapshots) on a Flash Array (up to 30 days) or Flash Blade (up to 400 days) and prevents them from being manually deleted before the policy/timer expires allowing you to recover quickly in the event of a mistake or malicious activity.
+Before SafeMode™ is enabled, a storage admin can Destroy an object, the object will be marked for deletion and will remain on the array for 24 hours (default) before it's fully Eradicated (aka gone forever). Within that 24-hour window, the storage admin can choose to restore the object if they realize they made a mistake or can choose to Eradicate the object now to free up space on the array if needed.
+
+
+How do you enable SafeMode™?
+Step 1. Make sure all your volumes and volume groups have a snapshot policy defined.
+Step 2. Contact support to have SafeMode™ enabled.
+Step 3. Assign authorized contacts from your company who safely store their unique identification method received from Pure Support.
+Step 4. Set the Eradication Timer to something beyond 24 hours to provide an optimal recovery window.
+
+
+
+
+	1. Per object safe mode
+	2. Default protection safe mode
+	3. Auto on Safe mode for new arrays
+	
+	Out of the box, enable Ransomware protection capabilities for new arrays
+	New volumes are automatically assigned a default protection group
+	Snapshots are then automatic for all new volumes.
+	
+	
