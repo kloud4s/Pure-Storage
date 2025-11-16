@@ -1,0 +1,114 @@
+Pure Array models
+
+
+Pure Storage Flash Array Models
+List of all the Pure Storage Flash Array models.
+• FlashArray 300 Series
+• FA-310 ( 2011 )
+• Raw Capacity : 5.5TB
+• Max Usable Capacity : 25TB
+• Max Cache :
+• Max BandWidth : 1GB/s
+• Max IOPS :
+• FA-320 ( 2012 )
+• Raw Capacity : 11TB
+• Max Usable Capacity : 50TB
+• Max Cache : 96GB
+• Max BandWidth : 1.5GB/s
+• Max IOPS : 200,000 4K
+• FlashArray 400 Series
+• FA-405 ( 2014 )
+• Raw Capacity : 2.75 - 11TB
+• Max Usable Capacity : 40TB
+• Max Cache : 256GB
+• Max BandWidth : 3GB/s
+• Max IOPS : 100,000 32K
+• FA-420 ( 2013 )
+• Raw Capacity : 11 - 35TB
+• Max Usable Capacity : 125TB
+• Max Cache : 512GB
+• Max BandWidth : 5GB/s
+• Max IOPS : 150,000 32K
+• FA-450 ( 2014 )
+• Raw Capacity : 34 : 70TB
+• Max Usable Capacity : 250TB
+• Max Cache : 1024GB
+• Max BandWidth : 7GB/s
+• Max IOPS : 200,000 32K
+• FlashArray M Series
+• //M10 ( )
+• Raw Capacity : 5 - 10TB
+• Max Usable Capacity : 25TB
+• Max Cache :
+• Max BandWidth : 3GB/s
+• Max IOPS : 100,000 32K
+• //M20 ( 2015 )
+• Raw Capacity : 5 : 40TB
+• Max Usable Capacity : 120TB
+• Max Cache : 256GB
+• Max BandWidth : 5GB/s
+• Max IOPS : 150,000 32K
+• //M50 ( 2015 )
+• Raw Capacity : 5 - 88TB
+• Max Usable Capacity : 250TB
+• Max Cache : 512GB
+• Max BandWidth : 7GB/s
+• Max IOPS : 220,000 32K
+• //M70 ( 2016 )
+• Raw Capacity : 5 - 136TB
+• Max Usable Capacity : 450TB
+• Max Cache : 1TB
+• Max BandWidth : 9GB/s
+• Max IOPS : 300,000 32K
+• FlashArray X Series
+• //X10 ( 2018 )
+• Raw Capacity : 20TB
+• Max Usable Capacity : 61TB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS : 300,000 32K
+• //X20 ( 2018 )
+• Raw Capacity : 91TB
+• Max Usable Capacity : 314TB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS : 300,000 32K
+• //X50 ( 2018 )
+• Raw Capacity : 183TB
+• Max Usable Capacity : 663TB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS : 300,000 32K
+• //X70 ( 2017 )
+• Raw Capacity : 366TB
+• Max Usable Capacity : 1.3PB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS : 300,000 32K
+• //X90 ( 2018 )
+• Raw Capacity : 878TB
+• Max Usable Capacity : 3.3PB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS : 300,000 32K
+• FlashArray C Series
+• //C60-366 ( 2019 )
+• Raw Capacity : 366TB
+• Max Usable Capacity : 1.3PB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS :
+• //C60-878 ( 2019 )
+• Raw Capacity : 878TB
+• Max Usable Capacity : 3.2PB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS :
+• //C60-1390 ( 2019 )
+• Raw Capacity : 1.39PB
+• Max Usable Capacity : 5.2PB
+• Max Cache :
+• Max BandWidth :
+• Max IOPS :
+
+From <https://www.rajeshvu.com/storage/pure/articles/pure-flasharray-models> 
