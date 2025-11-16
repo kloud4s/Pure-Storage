@@ -1,0 +1,10 @@
+Async Replication -----------------------------Active Cluster ----------------------------------------Active DR
+
+
+1. For Asynchronous Replication:
+	○ Set Up Replication:
+		1. Configure replication between the source and destination arrays using Pure1 or the FlashArray GUI.
+		2. Ensure that replication policies and schedules are set up correctly.
+	○ Start Replication:
+		1. Begin the replication process, monitoring the progress through the GUI or CLI.
+		2. Wait for the initial data synchronization to complete.
